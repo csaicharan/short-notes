@@ -15,6 +15,7 @@ const Person = (props) => {
     return (
         <div className="person">
             <p>Name: {props.name} Age: {props.age}</p>
+            <p>Occupation: {props.inputText}</p>
             <div>{props.children}</div>
             <input type="text" value={props.inputText} onChange={props.change}/>
             <button onClick={props.click} style={btnStyles}>Click Me</button>

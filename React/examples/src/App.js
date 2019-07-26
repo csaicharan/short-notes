@@ -15,16 +15,16 @@ class App extends React.Component {
   state = {
     person : [
       {
+        id: '1', // While iterating through the list react expects an unique identifier to be assigned to JSX's 'key' attribute to avoid re-rendering un changed elements of the lists while we are performing CRUD operations in an Array
         name: 'Sai',
         age: 29
       },
       {
+        id: '2',
         name: 'Ramu',
         age: 30
       }
     ],
-    address : 'Bangalore, India',
-    inputText: 'Text',
     isPersonsViewed : false // Implementing conditional based content rendering in react applications, but keep in mind we can just us ternary operator (?) in JSX syntax we can use if condition and wrap that operator in between {}. 
     //The content will be rendered dynamically based in the condition and it improves the performance by not showing in intended view and eliminate rendering of un shown elements
   }
@@ -54,9 +54,11 @@ class App extends React.Component {
   /**
    * Two way binding can be achieved with settingState when you change any value in input and that state is passed to the value of an input
    */
-  onChangeInputHandler = (event) => {
+  onChangeInputHandler = (index, event) => {
+    let persons = [...this.state.person]; // Using spread operator we are creating a copy of the original array to maintain the mutability of the state object
+    persons[index].inputText = event.target.value
     this.setState({
-      inputText : event.target.value
+      person: persons
     });
   }
 
@@ -69,19 +71,24 @@ class App extends React.Component {
 
   
   render(){
-    const {person, isPersonsViewed} = this.state;
+    const {person: persons, isPersonsViewed} = this.state;
 
     let personsHtml = null; // Can write the conditional rendering in the most elegant way by storing into the variable and using it in the JSX
 
     if(isPersonsViewed){
       personsHtml = (
           <div>
-            <Person name={person[0].name} age={person[0].age} click={this.onClickHandlerFromChild.bind(this, person[0])} change={this.onChangeInputHandler} inputText={this.state.inputText}>
-                      I am Software Engineer
-            </Person>
-            <Person name={person[1].name} age={person[1].age} click={this.onClickHandlerFromChild.bind(this, person[1])} change={this.onChangeInputHandler} inputText={this.state.inputText}>
-              I am a Bank employee
-            </Person>
+            {
+              persons.map((person, index) => {
+                return <Person 
+                          name={person.name} 
+                          age={person.age}
+                          inputText={person.inputText}
+                          change={this.onChangeInputHandler.bind(this, index)}
+                          key={person.id}
+                        />
+              })
+            }
           </div>
       );
     }
