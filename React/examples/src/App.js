@@ -16,7 +16,8 @@ class App extends React.Component {
         age: 30
       }
     ],
-    address : 'Bangalore, India'
+    address : 'Bangalore, India',
+    inputText: 'Text'
   }
 
   age = 40;
@@ -41,6 +42,15 @@ class App extends React.Component {
     console.log('ClickHandler', personObj);
   }
 
+  /**
+   * Two way binding can be achieved with settingState when you change any value in input and that state is passed to the value of an input
+   */
+  onChangeInputHandler = (event) => {
+    this.setState({
+      inputText : event.target.value
+    });
+  }
+
   
   render(){
 
@@ -48,10 +58,10 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Person name={person[0].name} age={person[0].age} click={this.onClickHandlerFromChild.bind(this, person[0])}>
+        <Person name={person[0].name} age={person[0].age} click={this.onClickHandlerFromChild.bind(this, person[0])} change={this.onChangeInputHandler} inputText={this.state.inputText}>
           I am Software Engineer
         </Person>
-        <Person name={person[0].name} age={person[0].age} click={this.onClickHandlerFromChild.bind(this, person[1])}>
+        <Person name={person[0].name} age={person[0].age} click={this.onClickHandlerFromChild.bind(this, person[1])} change={this.onChangeInputHandler} inputText={this.state.inputText}>
           I am a Bank employee
         </Person>
       </div>
