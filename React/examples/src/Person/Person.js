@@ -7,6 +7,7 @@ const Person = (props) => {
         <div>
             <p>Name: {props.name} Age: {props.age}</p>
             <div>{props.children}</div>
+            <button onClick={props.click}>Click Me</button>
         </div>
     );
 }
