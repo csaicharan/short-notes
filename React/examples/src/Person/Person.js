@@ -3,7 +3,13 @@
 import React from 'react';
 
 const Person = (props) => {
-    return <p>Name: {props.name} Age: {props.age}</p>;
+    console.log('Properties', props);
+    return (
+        <div>
+            <p>Name: {props.name} Age: {props.age}</p>
+            <div>{props.children}</div>
+        </div>
+    );
 }
 
 export default Person;
