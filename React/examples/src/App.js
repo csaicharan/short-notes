@@ -69,24 +69,28 @@ class App extends React.Component {
 
   
   render(){
-
     const {person, isPersonsViewed} = this.state;
+
+    let personsHtml = null; // Can write the conditional rendering in the most elegant way by storing into the variable and using it in the JSX
+
+    if(isPersonsViewed){
+      personsHtml = (
+          <div>
+            <Person name={person[0].name} age={person[0].age} click={this.onClickHandlerFromChild.bind(this, person[0])} change={this.onChangeInputHandler} inputText={this.state.inputText}>
+                      I am Software Engineer
+            </Person>
+            <Person name={person[1].name} age={person[1].age} click={this.onClickHandlerFromChild.bind(this, person[1])} change={this.onChangeInputHandler} inputText={this.state.inputText}>
+              I am a Bank employee
+            </Person>
+          </div>
+      );
+    }
 
     return (
       <div className="App">
         <h1>Examples of React</h1>
         <button style={btnStyles} onClick={this.toggleViewPersonsHandler}>Toggle Persons</button>
-        { isPersonsViewed ? 
-          <div>
-            <Person name={person[0].name} age={person[0].age} click={this.onClickHandlerFromChild.bind(this, person[0])} change={this.onChangeInputHandler} inputText={this.state.inputText}>
-                      I am Software Engineer
-            </Person>
-            <Person name={person[0].name} age={person[0].age} click={this.onClickHandlerFromChild.bind(this, person[1])} change={this.onChangeInputHandler} inputText={this.state.inputText}>
-              I am a Bank employee
-            </Person>
-          </div>
-          : null
-        }
+        { personsHtml }
       </div>
     )
   }
