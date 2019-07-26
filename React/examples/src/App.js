@@ -7,9 +7,12 @@ function App() {
   return (
     <div className="App">
       Initial Commit
-      <Person />
+      <Person name="Sai" age="28"/>
+      <Person name="Charan" age="27"/>
+      <Person name="krishna" age="26">My Content</Person>
+      <Person name="Ramu" age="25"/>
     </div>
   );
 }
 
-export default App;
+export default App; 

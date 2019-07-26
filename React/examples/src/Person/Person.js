@@ -1,9 +1,9 @@
 // While creating the functional component we must keep in mind we should import React to use JSX syntax in the js files
-
+// Functional or stateless or dumb or presentational components which are not having any states attached to the component
 import React from 'react';
 
-const Person = () => {
-    return <p1>I'm a person.</p1>;
+const Person = (props) => {
+    return <p>Name: {props.name} Age: {props.age}</p>;
 }
 
 export default Person;
