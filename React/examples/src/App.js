@@ -5,18 +5,23 @@ import Person from './Person/Person';
 
 class App extends React.Component {
 
+  state = {
+    person : {
+      name: 'Sai',
+      age: 29
+    }
+  }
 
   render(){
+
+    const {person} = this.state;
 
     return (
       <div className="App">
         Initial Commit
-        <Person name="Sai" age="28"/>
-        <Person name="Charan" age="27"/>
-        <Person name="krishna" age="26">
-          <h1>My Content</h1>
+        <Person name={person.name} age={person.age}>
+          I am Software Engineer
         </Person>
-        <Person name="Ramu" age="25"/>
       </div>
     )
   }

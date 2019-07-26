@@ -3,7 +3,6 @@
 import React from 'react';
 
 const Person = (props) => {
-    console.log('Properties', props);
     return (
         <div>
             <p>Name: {props.name} Age: {props.age}</p>
