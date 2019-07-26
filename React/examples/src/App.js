@@ -55,8 +55,14 @@ class App extends React.Component {
    * Two way binding can be achieved with settingState when you change any value in input and that state is passed to the value of an input
    */
   onChangeInputHandler = (index, event) => {
+    const person = {
+      ...this.state.person[index], // Earlier we just not tried to mutate the array, but it contains the objects we are following the same to maintain the immutable data and it is equivalent to Object.assign({}, this.state.person[index]).
+      inputText : event.target.value
+    }
     let persons = [...this.state.person]; // Using spread operator we are creating a copy of the original array to maintain the mutability of the state object
-    persons[index].inputText = event.target.value
+
+    persons[index] = person;
+
     this.setState({
       person: persons
     });
