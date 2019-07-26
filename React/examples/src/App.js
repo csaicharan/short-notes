@@ -3,6 +3,13 @@ import './App.css';
 import React from 'react';
 import Person from './Person/Person';
 
+const btnStyles = {
+  backgroundColor : '#fff',
+  color: 'green',
+  border : '1px solid gray',
+  cursor: 'pointer',
+  padding: '10px'
+}
 class App extends React.Component {
 
   state = {
@@ -17,7 +24,9 @@ class App extends React.Component {
       }
     ],
     address : 'Bangalore, India',
-    inputText: 'Text'
+    inputText: 'Text',
+    isPersonsViewed : false // Implementing conditional based content rendering in react applications, but keep in mind we can just us ternary operator (?) in JSX syntax we can use if condition and wrap that operator in between {}. 
+    //The content will be rendered dynamically based in the condition and it improves the performance by not showing in intended view and eliminate rendering of un shown elements
   }
 
   age = 40;
@@ -51,19 +60,33 @@ class App extends React.Component {
     });
   }
 
+  toggleViewPersonsHandler = () => {
+    const isPersonsViewed = this.state.isPersonsViewed;
+    this.setState({
+      isPersonsViewed : !isPersonsViewed
+    });
+  }
+
   
   render(){
 
-    const {person} = this.state;
+    const {person, isPersonsViewed} = this.state;
 
     return (
       <div className="App">
-        <Person name={person[0].name} age={person[0].age} click={this.onClickHandlerFromChild.bind(this, person[0])} change={this.onChangeInputHandler} inputText={this.state.inputText}>
-          I am Software Engineer
-        </Person>
-        <Person name={person[0].name} age={person[0].age} click={this.onClickHandlerFromChild.bind(this, person[1])} change={this.onChangeInputHandler} inputText={this.state.inputText}>
-          I am a Bank employee
-        </Person>
+        <h1>Examples of React</h1>
+        <button style={btnStyles} onClick={this.toggleViewPersonsHandler}>Toggle Persons</button>
+        { isPersonsViewed ? 
+          <div>
+            <Person name={person[0].name} age={person[0].age} click={this.onClickHandlerFromChild.bind(this, person[0])} change={this.onChangeInputHandler} inputText={this.state.inputText}>
+                      I am Software Engineer
+            </Person>
+            <Person name={person[0].name} age={person[0].age} click={this.onClickHandlerFromChild.bind(this, person[1])} change={this.onChangeInputHandler} inputText={this.state.inputText}>
+              I am a Bank employee
+            </Person>
+          </div>
+          : null
+        }
       </div>
     )
   }

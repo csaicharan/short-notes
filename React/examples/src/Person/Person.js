@@ -4,7 +4,7 @@ import React from 'react';
 import './Person.css'; // This type of style imports are not scoped to the component, it will be adding into the global styles. We have to make sure weather it is not conflicting to the other styles by adding a container class and other style should be under that class
 
 // Inline styles can be added into the react components by creating CSS as an object and then assign it to the element's "style" attribute and the properties of CSS should as camelCased keys in this CSS object JSX will take of rendering into that element's CSS 
-const btnStyles = {
+export const btnStyles = {
     backgroundColor : '#fff',
     color: 'green',
     border : '1px solid gray',
