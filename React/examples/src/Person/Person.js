@@ -1,7 +1,6 @@
 // While creating the functional component we must keep in mind we should import React to use JSX syntax in the js files
 // Functional or stateless or dumb or presentational components which are not having any states attached to the component
 import React from 'react';
-import Radium from 'radium';
 
 import './Person.css'; // This type of style imports are not scoped to the component, it will be adding into the global styles. We have to make sure weather it is not conflicting to the other styles by adding a container class and other style should be under that class
 
@@ -15,15 +14,9 @@ const btnStyles = {
 
 const Person = (props) => {
 
-    // To apply media queries we should give the syntax in the following way and we shouldn't forgot to wrap the root component under <StyleRoot/>
-    const mediaQueryStyles = {
-        '@media (min-width:500px)' : {
-            width : '450px'
-        }
-    }
 
     return (
-        <div className="person" style={mediaQueryStyles}>
+        <div className="person" >
             <p>Name: {props.name} Age: {props.age}</p>
             <p>Occupation: {props.inputText}</p>
             <div>{props.children}</div>
@@ -35,4 +28,4 @@ const Person = (props) => {
     );
 }
 
-export default Radium(Person);
+export default Person;
