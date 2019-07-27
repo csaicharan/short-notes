@@ -14,12 +14,6 @@ const btnStyles = {
 
 const Person = (props) => {
 
-    // Throwing an intended error to handle it in the parent's component
-    
-    if(Math.random() > 0.7){
-        throw new Error();
-    }
-
     return (
         <div className="person" >
             <p>Name: {props.name} Age: {props.age}</p>
