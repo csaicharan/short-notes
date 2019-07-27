@@ -3,13 +3,6 @@ import './App.css';
 import React from 'react';
 import Person from './Person/Person';
 
-const btnStyles = {
-  backgroundColor : '#fff',
-  color: 'green',
-  border : '1px solid gray',
-  cursor: 'pointer',
-  padding: '10px'
-}
 class App extends React.Component {
 
   state = {
@@ -79,6 +72,14 @@ class App extends React.Component {
   render(){
     const {person: persons, isPersonsViewed} = this.state;
 
+    let btnStyles = {
+      backgroundColor : 'Green',
+      color: '#fff',
+      border : '1px solid gray',
+      cursor: 'pointer',
+      padding: '10px'
+    }
+
     let personsHtml = null; // Can write the conditional rendering in the most elegant way by storing into the variable and using it in the JSX
 
     if(isPersonsViewed){
@@ -97,6 +98,7 @@ class App extends React.Component {
             }
           </div>
       );
+      btnStyles.backgroundColor = 'red'; // Adding styles dynamically to the button and of we observe here we are taking advantage of render method and skipping the else part to make the background to green
     }
 
     return (
