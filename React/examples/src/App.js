@@ -1,6 +1,7 @@
 import './App.css';
 
 import React from 'react';
+import Radium from 'radium'; // Radium is a third party library and it process the inline styles written in the component and the advantage of radium is we can write css for pseudo selectors, add media queries and maintain style scope for the react component
 import Person from './Person/Person';
 
 class App extends React.Component {
@@ -85,7 +86,11 @@ class App extends React.Component {
       color: '#fff',
       border : '1px solid gray',
       cursor: 'pointer',
-      padding: '10px'
+      padding: '10px',
+      ':hover' : { // We should wrap the :hover with single quote because it isn't supported by javascript
+        backgroundColor : 'lightgreen',
+        color: 'black'
+      }
     }
 
     let personsHtml = null; // Can write the conditional rendering in the most elegant way by storing into the variable and using it in the JSX
@@ -108,6 +113,12 @@ class App extends React.Component {
           </div>
       );
       btnStyles.backgroundColor = 'red'; // Adding styles dynamically to the button and of we observe here we are taking advantage of render method and skipping the else part to make the background to green
+      
+      // Through the following syntax we can access the styles and overwrite with the new styles
+      btnStyles[':hover'] = {
+        backgroundColor : 'lightblue',
+        color: 'gray'
+      }
     }
 
     let headingClasses = [];
@@ -132,4 +143,4 @@ class App extends React.Component {
   }
 }
 
-export default App; 
+export default Radium(App); // Should wrap around our component with the Radium, basically it is a Higher Order Component (HOC) is provides some extra functionality to our component before exporting from the module
