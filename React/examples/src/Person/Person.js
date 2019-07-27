@@ -18,7 +18,9 @@ const Person = (props) => {
             <p>Occupation: {props.inputText}</p>
             <div>{props.children}</div>
             <input type="text" value={props.inputText} onChange={props.change}/>
-            <button onClick={props.click} style={btnStyles}>Click Me</button>
+            <div>
+                <button onClick={props.delete} style={btnStyles}>Delete</button>
+            </div>
         </div>
     );
 }

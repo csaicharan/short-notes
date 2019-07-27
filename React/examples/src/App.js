@@ -68,8 +68,16 @@ class App extends React.Component {
     });
   }
 
-  
+  onDeleteHandler(deletedIndex){
+    let persons = [...this.state.person];
+    persons.splice(deletedIndex, 1);
+    this.setState({
+      person: persons
+    });
+  }
+
   render(){
+
     const {person: persons, isPersonsViewed} = this.state;
 
     let btnStyles = {
@@ -92,6 +100,7 @@ class App extends React.Component {
                           age={person.age}
                           inputText={person.inputText}
                           change={this.onChangeInputHandler.bind(this, index)}
+                          delete={this.onDeleteHandler.bind(this, index)}
                           key={person.id}
                         />
               })
@@ -101,9 +110,21 @@ class App extends React.Component {
       btnStyles.backgroundColor = 'red'; // Adding styles dynamically to the button and of we observe here we are taking advantage of render method and skipping the else part to make the background to green
     }
 
+    let headingClasses = [];
+
+    if(persons.length === 2){
+      headingClasses.push('bold');
+    }
+    if(persons.length === 1){
+      headingClasses.push('red');
+    }
+    if(persons.length === 0){
+      headingClasses.push('strike');
+    }
+
     return (
       <div className="App">
-        <h1>Examples of React</h1>
+        <h1 className={headingClasses.join(' ')}>Examples of React</h1>
         <button style={btnStyles} onClick={this.toggleViewPersonsHandler}>Toggle Persons</button>
         { personsHtml }
       </div>
