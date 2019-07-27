@@ -1,7 +1,8 @@
 import './App.css';
 
 import React from 'react';
-import Radium from 'radium'; // Radium is a third party library and it process the inline styles written in the component and the advantage of radium is we can write css for pseudo selectors, add media queries and maintain style scope for the react component
+import Radium, {StyleRoot} from 'radium'; // Radium is a third party library and it process the inline styles written in the component and the advantage of radium is we can write css for pseudo selectors, add media queries and maintain style scope for the react component
+// Should wrap the root component with <StyleRoot/> to add the media to the css in the root level
 import Person from './Person/Person';
 
 class App extends React.Component {
@@ -134,11 +135,13 @@ class App extends React.Component {
     }
 
     return (
-      <div className="App">
-        <h1 className={headingClasses.join(' ')}>Examples of React</h1>
-        <button style={btnStyles} onClick={this.toggleViewPersonsHandler}>Toggle Persons</button>
-        { personsHtml }
-      </div>
+      <StyleRoot> {/** Should add this element when we are using inlined media queries with Radium */}
+        <div className="App">
+          <h1 className={headingClasses.join(' ')}>Examples of React</h1>
+          <button style={btnStyles} onClick={this.toggleViewPersonsHandler}>Toggle Persons</button>
+          { personsHtml }
+        </div>
+      </StyleRoot>
     )
   }
 }

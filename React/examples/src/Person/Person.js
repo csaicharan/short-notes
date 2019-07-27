@@ -14,8 +14,16 @@ const btnStyles = {
 }
 
 const Person = (props) => {
+
+    // To apply media queries we should give the syntax in the following way and we shouldn't forgot to wrap the root component under <StyleRoot/>
+    const mediaQueryStyles = {
+        '@media (min-width:500px)' : {
+            width : '450px'
+        }
+    }
+
     return (
-        <div className="person">
+        <div className="person" style={mediaQueryStyles}>
             <p>Name: {props.name} Age: {props.age}</p>
             <p>Occupation: {props.inputText}</p>
             <div>{props.children}</div>
