@@ -15,6 +15,20 @@ class PersonsList extends Component{
     return state;
     }
 
+    getSnapshotBeforeUpdate(prevProps, prevState){
+        console.log("[Persons.js] getSnapshotBeforeUpdate");
+        return null
+    }
+
+    shouldComponentUpdate(nextProp, nextState){
+        console.log("[Persons.js] shouldComponentUpdate");
+        return true;
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot){
+        console.log("[Persons.js] componentDidUpdate");
+    }
+
     componentDidMount(){
         console.log("[Persons.js] componentDidMount");
     }
