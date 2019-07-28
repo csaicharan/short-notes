@@ -1,15 +1,3 @@
 .App {
   text-align: center;
 }
-
-.bold{
-  font-style: bold;
-}
-
-.red{
-  color : red;
-}
-
-.strike{
-  text-decoration: line-through;
-}

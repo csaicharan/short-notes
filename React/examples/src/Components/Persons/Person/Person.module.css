@@ -1,0 +1,13 @@
+.Person{
+    margin: 10px auto;
+    width: 600px;
+    padding: 10px;
+    border: 1px solid gray;
+}
+
+.Person button{
+    background-color: #fff;
+    color: green;
+    border: 1px solid gray;
+    cursor: pointer;
+}
