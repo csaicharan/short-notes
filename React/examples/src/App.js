@@ -5,6 +5,11 @@
  * 3) The class components should contains only the methods related to the state change other methods can be moved to the JS modules
  */
 
+ /**
+  * Life Cycle hooks of the components for create
+  * constructor => getDerivedStateFromProps => render => children's Lifecycle hooks => componentDidMount
+  */
+
 import './App.css';
 
 import React, { Component } from 'react';
@@ -13,23 +18,40 @@ import Cockpit from './Components/Cockpit/Cockpit';
 
 class App extends Component {
 
-  state = {
-    person : [
-      {
-        id: '1', 
-        name: 'Sai',
-        age: 29,
-        inputText: ''
-      },
-      {
-        id: '2',
-        name: 'Ramu',
-        age: 30,
-        inputText: ''
-      }
-    ],
-    isPersonsViewed : false
+  constructor(props){
+    super(props);
+    this.state = {
+      person : [
+        {
+          id: '1', 
+          name: 'Sai',
+          age: 29,
+          inputText: ''
+        },
+        {
+          id: '2',
+          name: 'Ramu',
+          age: 30,
+          inputText: ''
+        }
+      ],
+      isPersonsViewed : true
+    }
+    console.log("[App.Js] Constructor");
   }
+
+  static getDerivedStateFromProps(props, state){
+    console.log("[App.Js] getDerivedStateFromProps");
+    return state;
+  }
+
+  componentDidMount(){
+    console.log("[App.Js] componentDidMount");
+  }
+
+  // UNSAFE_componentWillMount(){ // Is Deprecated to enable async rendering
+  //   console.log("[App.Js] componentWillMount");
+  // }
 
   onChangeInputHandler = (index, event) => {
     const person = {
@@ -61,6 +83,7 @@ class App extends Component {
   }
 
   render(){
+    console.log("[App.Js] Render");
 
     const {person: persons, isPersonsViewed} = this.state;
 
