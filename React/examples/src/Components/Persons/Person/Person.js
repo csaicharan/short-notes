@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 import CSSClass from './Person.module.css';
 
@@ -24,6 +25,14 @@ class Person extends Component {
             </Wrapper>
         );
     }
+}
+
+Person.propTypes = {
+    name: PropTypes.string,
+    age: PropTypes.number,
+    inputText: PropTypes.string,
+    change: PropTypes.func,
+    delete: PropTypes.func
 }
 
 export default WithClass(Person, CSSClass.Person);
