@@ -1,18 +1,23 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 
 import CSSClasses from './Cockpit.module.css';
 
 const Cockpit = (props) => {
+  /**
+   * Create element references in functional components
+   */
+   const toggleBtnElementRef = useRef(null);
 
     // useEffect usage this is like componentDidUpdate and componentDidMount
     useEffect(()=>{
-
+      // alert('Clicking the btn');
       console.log("[Cockpit.js] useEffect");
+      toggleBtnElementRef.current.click();
       
       return () => {
         console.log("[Cockpit.js] Clean up work of useEffect");
       }
-    }); // Depending on the passing array we choose weather it should execute on just like didMount or didUpdate 
+    },[]); // Depending on the passing array we choose weather it should execute on just like didMount or didUpdate 
     // Possible inputs
     // nothing : triggers every didMount and didUpdate on every input prop changes
     // [] : empty array used to tell just execute like didMount
@@ -38,7 +43,11 @@ const Cockpit = (props) => {
     return (
         <div className={CSSClasses.Cockpit}>
           <h1 className={cockPitClasses.join(' ')}>Examples of React</h1>
-          <button className={btnClass} onClick={props.toggleClicked}>Toggle Persons</button>
+          <button 
+            ref={toggleBtnElementRef}
+            className={btnClass} 
+            onClick={props.toggleClicked}
+          >Toggle Persons</button>
         </div>
     );
 }
