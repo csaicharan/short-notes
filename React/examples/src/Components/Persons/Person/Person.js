@@ -8,6 +8,11 @@ import WithClass from '../../../HOC/withClassComponent';
 
 class Person extends Component {
 
+    componentDidMount(){
+        console.log(this.inputRef);
+        this.inputRef.focus();
+    }
+
     render(){
         console.log("[Person.js constructor]");
 
@@ -17,7 +22,12 @@ class Person extends Component {
                 <p>My Name is <strong>{this.props.name}</strong> and my Age is <strong>{this.props.age}</strong>.</p>
                 <p>My Occupation is  <strong>{this.props.inputText}</strong></p>
                 <div>{this.props.children}</div>
-                <input type="text" value={this.props.inputText} onChange={this.props.change}/>
+                <input 
+                    type="text" 
+                    value={this.props.inputText} 
+                    onChange={this.props.change}
+                    ref={(inputRef) => {this.inputRef = inputRef;}}
+                />
                 <div>
                     <button onClick={this.props.delete}>Delete</button>
                 </div>
