@@ -2,13 +2,16 @@ import React, {Component} from 'react';
 
 import CSSClass from './Person.module.css';
 
+import Wrapper from '../../../HOC/WrapperComponent';
+
 class Person extends Component {
 
     render(){
         console.log("[Person.js constructor]");
 
         return (
-            <div className={CSSClass.Person} >
+            <Wrapper>
+             {/* <div className={CSSClass.Person} > */}
                 <p>My Name is <strong>{this.props.name}</strong> and my Age is <strong>{this.props.age}</strong>.</p>
                 <p>My Occupation is  <strong>{this.props.inputText}</strong></p>
                 <div>{this.props.children}</div>
@@ -16,7 +19,8 @@ class Person extends Component {
                 <div>
                     <button onClick={this.props.delete}>Delete</button>
                 </div>
-            </div>
+            {/* // </div> */}
+            </Wrapper>
         );
     }
 }
