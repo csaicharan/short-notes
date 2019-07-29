@@ -8,9 +8,17 @@ import WithClass from '../../../HOC/withClassComponent';
 
 class Person extends Component {
 
+    /**
+     * After React 16.3 we can get the references in different approach
+     */
+    constructor(props){
+        super(props);
+        this.inputElementRef = React.createRef(); // New way of creating references
+    }
+
     componentDidMount(){
-        console.log(this.inputRef);
-        this.inputRef.focus();
+        // this.inputRef.focus(); // This is the old way of getting the element's reference
+        this.inputElementRef.current.focus();
     }
 
     render(){
@@ -26,7 +34,8 @@ class Person extends Component {
                     type="text" 
                     value={this.props.inputText} 
                     onChange={this.props.change}
-                    ref={(inputRef) => {this.inputRef = inputRef;}}
+                    // ref={(inputRef) => {this.inputRef = inputRef;}} This is the old way of getting the element's reference
+                    ref={this.inputElementRef}
                 />
                 <div>
                     <button onClick={this.props.delete}>Delete</button>
