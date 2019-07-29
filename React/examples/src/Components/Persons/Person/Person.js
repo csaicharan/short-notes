@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import CSSClass from './Person.module.css';
 
 import Wrapper from '../../../HOC/WrapperComponent';
+import WithClass from '../../../HOC/withClassComponent';
 
 class Person extends Component {
 
@@ -25,4 +26,4 @@ class Person extends Component {
     }
 }
 
-export default Person;
+export default WithClass(Person, CSSClass.Person);
