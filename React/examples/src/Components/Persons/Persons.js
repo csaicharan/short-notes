@@ -36,7 +36,7 @@ class PersonsList extends Component{
     }
 
     componentWillUnmount(){
-        console.log("[Persons.js] componentWillUnmount"); // this lifecycle method executes on unmounting of this component
+        console.log("[Persons.js] Clean up tasks for components using and lifecycle methods"); // this lifecycle method executes on unmounting of this component
     }
 
     render(){

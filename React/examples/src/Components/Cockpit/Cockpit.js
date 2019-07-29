@@ -7,7 +7,17 @@ const Cockpit = (props) => {
     // useEffect usage this is like componentDidUpdate and componentDidMount
     useEffect(()=>{
       debugger;
-      console.log("[Cockpit.js] use Effect")
+      
+      console.log("[Cockpit.js] use Effect");
+
+      const interval = setInterval(()=>{
+        console.log('This is from interval');
+      });
+
+      return () => {
+        clearInterval(interval);
+        console.log("[Cockpit.js] Clean up work of useEffect");
+      }
     }, [props.persons]); // Depending on the passing array we choose weather it should execute on just like didMount or didUpdate 
     // Possible inputs
     // nothing : triggers every didMount and didUpdate on every input prop changes
