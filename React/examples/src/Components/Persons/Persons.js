@@ -16,8 +16,9 @@ class PersonsList extends Component{
     }
 
     getSnapshotBeforeUpdate(prevProps, prevState){
-        console.log("[Persons.js] getSnapshotBeforeUpdate");
-        return null
+        console.log("[Persons.js] getSnapshotBeforeUpdate", prevProps, prevState);
+        debugger;
+        return 'It is my snapshot to send to the didUpdate';
     }
 
     shouldComponentUpdate(nextProp, nextState){
@@ -26,7 +27,8 @@ class PersonsList extends Component{
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){
-        console.log("[Persons.js] componentDidUpdate");
+        debugger;
+        console.log("[Persons.js] componentDidUpdate", prevProps, prevState, snapshot);
     }
 
     componentDidMount(){

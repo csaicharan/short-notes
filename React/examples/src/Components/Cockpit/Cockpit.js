@@ -1,8 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import CSSClasses from './Cockpit.module.css';
 
 const Cockpit = (props) => {
+
+    // useEffect usage this is like componentDidUpdate and componentDidMount
+    useEffect(()=>{
+      debugger;
+      console.log("[Cockpit.js] use Effect")
+    }, [props.persons]); // Depending on the passing array we choose weather it should execute on just like didMount or didUpdate 
+    // Possible inputs
+    // nothing : triggers every didMount and didUpdate on every input prop changes
+    // [] : empty array used to tell just execute like didMount
+    // Specific property : used to trigger when that property changes
 
     const cockPitClasses = [];
     let btnClass = '';
