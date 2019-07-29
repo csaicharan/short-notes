@@ -17,17 +17,15 @@ class PersonsList extends Component{
 
     getSnapshotBeforeUpdate(prevProps, prevState){
         console.log("[Persons.js] getSnapshotBeforeUpdate", prevProps, prevState);
-        debugger;
         return 'It is my snapshot to send to the didUpdate';
     }
 
     shouldComponentUpdate(nextProp, nextState){
         console.log("[Persons.js] shouldComponentUpdate");
-        return true;
+        return nextProp.persons !== this.props.persons;
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){
-        debugger;
         console.log("[Persons.js] componentDidUpdate", prevProps, prevState, snapshot);
     }
 

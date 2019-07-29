@@ -100,7 +100,7 @@ class App extends Component {
     return (
         <div className="App">
           <Cockpit 
-            persons={persons} 
+            personsLength={persons.length} 
             toggleClicked={this.toggleViewPersonsHandler}
             isViewToggled={this.state.isPersonsViewed}
           />
