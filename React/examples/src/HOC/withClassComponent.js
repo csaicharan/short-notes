@@ -4,7 +4,7 @@ const withClassComponent = (WithComponent, className) => {
     return (props) => {
         return (
             <div className={className}>
-                <WithComponent/>
+                <WithComponent {...props}/>
             </div>
         )
     }

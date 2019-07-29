@@ -27,3 +27,4 @@ class Person extends Component {
 }
 
 export default WithClass(Person, CSSClass.Person);
+// export default Person;

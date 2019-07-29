@@ -35,7 +35,9 @@ class App extends Component {
           inputText: ''
         }
       ],
-      isPersonsViewed : true
+      isPersonsViewed : true,
+      changeCounter: 0
+
     }
     console.log("[App.Js] Constructor");
   }
@@ -62,8 +64,15 @@ class App extends Component {
 
     persons[index] = person;
 
-    this.setState({
-      person: persons
+    // The right way to change the current state based on the prevState 
+    // The wong way is this.setState({ stateVar : this.state.stateVar }) because of the setState Asynchronous way of execution you can't set the state correctly
+    // The right way is this.setState((state, props) => { return {stateVar : state + 'Manipulated' } })
+    this.setState((prevState, props) => {
+      console.log(prevState, props);
+      return {
+        person: persons,
+        changeCounter: prevState.changeCounter
+      }
     });
   }
 
