@@ -4,17 +4,19 @@
  * 2) Moving the inline css to css modules to make code looks cleaner and readable
  * 3) The class components should contains only the methods related to the state change other methods can be moved to the JS modules
  */
+import './App.css';
+
+import axios from 'axios';
+import React, { Component } from 'react';
+
+import Cockpit from './Components/Cockpit/Cockpit';
+import PersonsList from './Components/Persons/Persons';
+
 
  /**
   * Life Cycle hooks of the components for create
   * constructor => getDerivedStateFromProps => render => children's Lifecycle hooks => componentDidMount
   */
-
-import './App.css';
-
-import React, { Component } from 'react';
-import PersonsList from './Components/Persons/Persons';
-import Cockpit from './Components/Cockpit/Cockpit';
 
 class App extends Component {
 
@@ -48,6 +50,10 @@ class App extends Component {
   }
 
   componentDidMount(){
+    // axios.get('http://www.json-generator.com/api/json/get/bULIsVWTiq?indent=2')
+    // .then(response=>{
+    //   console.log('Response from server', response);
+    // });
     console.log("[App.Js] componentDidMount");
   }
 
