@@ -45,7 +45,7 @@ class Person extends Component {
                 <div>
                     <button onClick={this.props.delete}>Delete</button>
                 </div>
-                <div>{this.context.authenticated ? <strong>Authenticated</strong> : <div>Login Please!!!</div> }</div>
+                <div>{ this.context.authenticated ? <strong>Authenticated</strong> : <div>Login Please!!!</div> }</div>
 
             {/* // </div> */}
             </Wrapper>

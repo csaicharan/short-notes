@@ -1,6 +1,6 @@
-import React, {useEffect, useRef, Fragment} from 'react';
-import AuthContext from './../../context/AuthService';
+import React, { Fragment, useContext, useEffect, useRef } from 'react';
 
+import AuthContext from './../../context/AuthService';
 import CSSClasses from './Cockpit.module.css';
 
 const Cockpit = (props) => {
@@ -8,6 +8,7 @@ const Cockpit = (props) => {
    * Create element references in functional components
    */
    const toggleBtnElementRef = useRef(null);
+   const authContext = useContext(AuthContext); // Using context in functional components with react hooks
 
     // useEffect usage this is like componentDidUpdate and componentDidMount
     useEffect(()=>{
@@ -49,17 +50,9 @@ const Cockpit = (props) => {
             className={btnClass} 
             onClick={props.toggleClicked}
           >Toggle Persons</button>
-          <AuthContext.Consumer>
-            {
-              (context) => {
-                return (
                   <Fragment>
-                    <button onClick={context.login}>Login</button>
+                    <button onClick={authContext.login}>Login</button>
                   </Fragment>
-                )
-              }
-            }
-          </AuthContext.Consumer>
         </div>
     );
 }
