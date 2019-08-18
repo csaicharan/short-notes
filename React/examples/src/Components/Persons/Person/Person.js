@@ -10,6 +10,8 @@ import AuthContext from '../../../context/AuthService';
 
 class Person extends Component {
 
+    static contextType = AuthContext;
+
     /**
      * After React 16.3 we can get the references in different approach
      */
@@ -29,6 +31,7 @@ class Person extends Component {
         return (
             <Wrapper>
              {/* <div className={CSSClass.Person} > */}
+             
                 <p>My Name is <strong>{this.props.name}</strong> and my Age is <strong>{this.props.age}</strong>.</p>
                 <p>My Occupation is  <strong>{this.props.inputText}</strong></p>
                 <div>{this.props.children}</div>
@@ -42,9 +45,8 @@ class Person extends Component {
                 <div>
                     <button onClick={this.props.delete}>Delete</button>
                 </div>
-                <AuthContext.Consumer>
-                    { (context) => <div>{context.authenticated ? <strong>Authenticated</strong> : <div>Login Please!!!</div> }</div> }
-                </AuthContext.Consumer>
+                <div>{this.context.authenticated ? <strong>Authenticated</strong> : <div>Login Please!!!</div> }</div>
+
             {/* // </div> */}
             </Wrapper>
         );
