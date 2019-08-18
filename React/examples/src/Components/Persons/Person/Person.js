@@ -6,6 +6,8 @@ import CSSClass from './Person.module.css';
 import Wrapper from '../../../HOC/WrapperComponent';
 import WithClass from '../../../HOC/withClassComponent';
 
+import AuthContext from '../../../context/AuthService';
+
 class Person extends Component {
 
     /**
@@ -40,6 +42,9 @@ class Person extends Component {
                 <div>
                     <button onClick={this.props.delete}>Delete</button>
                 </div>
+                <AuthContext.Consumer>
+                    { (context) => <div>{context.authenticated ? <strong>Authenticated</strong> : <div>Login Please!!!</div> }</div> }
+                </AuthContext.Consumer>
             {/* // </div> */}
             </Wrapper>
         );

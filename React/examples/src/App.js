@@ -6,11 +6,14 @@
  */
 import './App.css';
 
-import axios from 'axios';
+// import axios from 'axios';
 import React, { Component } from 'react';
 
 import Cockpit from './Components/Cockpit/Cockpit';
 import PersonsList from './Components/Persons/Persons';
+
+// Auth Context is using context API to share the state between any level of hierarchy without property chaining
+import AuthContext from './context/AuthService';
 
 
  /**
@@ -37,9 +40,9 @@ class App extends Component {
           inputText: ''
         }
       ],
-      isPersonsViewed : true,
-      changeCounter: 0
-
+      isPersonsViewed : false,
+      changeCounter: 0,
+      isAuthenticated : false
     }
     console.log("[App.Js] Constructor");
   }
@@ -97,10 +100,26 @@ class App extends Component {
     });
   }
 
+  loginHandler = () =>{
+    this.setState((prevState, props)=>{
+      return {
+        isAuthenticated : !prevState.isAuthenticated
+      }
+    });
+  }
+
   render(){
     console.log("[App.Js] Render");
 
     const {person: persons, isPersonsViewed} = this.state;
+
+    // Here we are setting the global state of the application to use it from anywhere
+    const AuthContextValue = {
+      authenticated : this.state.isAuthenticated, // Authenticated state
+      login : this.loginHandler // Handler to change the authentication state
+    };
+
+
 
     let personsHtml = null; 
 
@@ -112,7 +131,10 @@ class App extends Component {
       />;
     }
 
+    // Should specify the provider that we are going to use this authContext to the component tree with the initial value
+
     return (
+      <AuthContext.Provider value={AuthContextValue}>
         <div className="App">
           <Cockpit 
             personsLength={persons.length} 
@@ -121,6 +143,7 @@ class App extends Component {
           />
           { personsHtml }
         </div>
+      </AuthContext.Provider>
     )
   }
 }

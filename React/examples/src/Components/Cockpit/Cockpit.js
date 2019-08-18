@@ -1,4 +1,5 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, Fragment} from 'react';
+import AuthContext from './../../context/AuthService';
 
 import CSSClasses from './Cockpit.module.css';
 
@@ -48,6 +49,17 @@ const Cockpit = (props) => {
             className={btnClass} 
             onClick={props.toggleClicked}
           >Toggle Persons</button>
+          <AuthContext.Consumer>
+            {
+              (context) => {
+                return (
+                  <Fragment>
+                    <button onClick={context.login}>Login</button>
+                  </Fragment>
+                )
+              }
+            }
+          </AuthContext.Consumer>
         </div>
     );
 }
