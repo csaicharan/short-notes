@@ -1,0 +1,18 @@
+.nav ol{
+    list-style: none;
+    width: 100%;
+    text-align: center;
+}
+.nav li{
+    display: inline-block;
+    margin: 20px;
+}
+
+.nav li a{
+    text-decoration: none;
+    color: black;
+}
+.nav li a:active,
+.nav li a:hover{
+    color: burlywood;
+}
