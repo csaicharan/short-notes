@@ -11,7 +11,7 @@
 </a>
 
 
-<strong>NOTE:</strong> This application was created with create-react-app provided by facebook
+<strong>NOTE:</strong> This application was created with `create-react-app` provided by facebook
 
 ## Creating react application with TypeScript
 
@@ -31,6 +31,11 @@ There are two steps to add SASS dependencies in your existing react application
 npm node-sass -S || --save
 ```
  
-### Referenc links
+### Reference links
 
 https://scotch.io/tutorials/using-sass-in-create-react-app-v2
+https://github.com/facebook/create-react-app
+https://sass-lang.com/
+https://reactjs.org
+https://www.typescriptlang.org
+
