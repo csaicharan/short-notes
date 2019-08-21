@@ -34,8 +34,12 @@ npm node-sass -S || --save
 ### Reference links
 
 https://scotch.io/tutorials/using-sass-in-create-react-app-v2
+<br/>
 https://github.com/facebook/create-react-app
+<br/>
 https://sass-lang.com/
+<br/>
 https://reactjs.org
+<br/>
 https://www.typescriptlang.org
 
