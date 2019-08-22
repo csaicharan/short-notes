@@ -51,30 +51,35 @@ class Layout extends Component{
                 <main>
                     {/** The problem with the route params are if we use /:id at root level and the rest paths were also considered as the id's to eliminate we use switch HOC to tell the router to use first available route with the criteria */}
                 <Switch>
+
+                    {/* Binding component to the route with the following code */}
+                    {/* React should detect this routes first and then it has to render the other routes, it works as FIFO basis */}
+                    <Route path="/parent-one" component={ParentOne}/>
+                    <Route path="/parent-two" component={ParentTwo}/>
+
                     {/* Here Exact refers to check the exact URL of the route if you wont use it will takes as a base path and renders in all the paths starting with the same path */}
+                    {/** Here we should remove exact attribute to make nested route work because the exact checks for the route and it wont render andy another route including child route */}
                     <Route path="/" 
-                        exact 
                         render={() => {
                             return (
+                                <div>
                                 <ul>
                                     <li>
-                                        <Link to='/1'>Go To Link One</Link>
+                                        <Link to='/1'>View Link One</Link>
                                     </li>
                                     <li>
-                                        <Link to='/2'>Go To Link Two</Link>
+                                        <Link to='/2'>View Link Two</Link>
                                     </li>
                                 </ul>
+
+                                {/** Route with parameters note that the same someId identifier should be used at the receiving end component */}
+                                <Route path="/:someId" component={ComponentWithRouteParam} />
+                                </div>
                             )
                         }}/>
 
                     {/* <Route path="/" render={() => <Home>Home 2</Home>}/> */}
 
-                    {/* Binding component to the route with the following code */}
-                    <Route path="/parent-one" component={ParentOne}/>
-                    <Route path="/parent-two" component={ParentTwo}/>
-
-                    {/** Route with parameters note that the same someId identifier should be used at the receiving end component */}
-                    <Route path="/:someId" component={ComponentWithRouteParam} />
                 </Switch>
                 </main>
             </div>
