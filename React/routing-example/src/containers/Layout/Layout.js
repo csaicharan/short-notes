@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, NavLink, Route } from 'react-router-dom';
+import { Link, NavLink, Route, Switch } from 'react-router-dom';
 
 import ComponentWithRouteParam from '../../components/ComponentWithRouteParam';
 import ParentOne from '../ParentOne/ParentOne';
@@ -49,7 +49,8 @@ class Layout extends Component{
                     </nav>
                 </header>
                 <main>
-
+                    {/** The problem with the route params are if we use /:id at root level and the rest paths were also considered as the id's to eliminate we use switch HOC to tell the router to use first available route with the criteria */}
+                <Switch>
                     {/* Here Exact refers to check the exact URL of the route if you wont use it will takes as a base path and renders in all the paths starting with the same path */}
                     <Route path="/" 
                         exact 
@@ -74,7 +75,7 @@ class Layout extends Component{
 
                     {/** Route with parameters note that the same someId identifier should be used at the receiving end component */}
                     <Route path="/:someId" component={ComponentWithRouteParam} />
-
+                </Switch>
                 </main>
             </div>
         )
