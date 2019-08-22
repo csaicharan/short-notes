@@ -1,16 +1,15 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { Link, NavLink, Route } from 'react-router-dom';
+
+import ComponentWithRouteParam from '../../components/ComponentWithRouteParam';
+import ParentOne from '../ParentOne/ParentOne';
+import ParentTwo from '../ParentTwo/ParentTwo';
+import CSSClasses from './Layout.module.css';
 
 /**
  * Step 2: Should import Route to start using routing in the application
  */
 // NOTE: Changing to NavLink to maintain active touter link
-import {Route, NavLink} from 'react-router-dom';
-import Home from '../../components/Home/Home';
-
-import CSSClasses from './Layout.module.css';
-import ParentOne from '../ParentOne/ParentOne';
-import ParentTwo from '../ParentTwo/ParentTwo';
-
 const routerLinkOptions = {
     pathname : '/parent-two',
     hash: '#submit',
@@ -52,13 +51,30 @@ class Layout extends Component{
                 <main>
 
                     {/* Here Exact refers to check the exact URL of the route if you wont use it will takes as a base path and renders in all the paths starting with the same path */}
-                    <Route path="/" exact render={() => <Home>Home 1</Home>}/>
-                    <Route path="/" render={() => <Home>Home 2</Home>}/>
+                    <Route path="/" 
+                        exact 
+                        render={() => {
+                            return (
+                                <ul>
+                                    <li>
+                                        <Link to='/1'>Go To Link One</Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/2'>Go To Link Two</Link>
+                                    </li>
+                                </ul>
+                            )
+                        }}/>
+
+                    {/* <Route path="/" render={() => <Home>Home 2</Home>}/> */}
 
                     {/* Binding component to the route with the following code */}
                     <Route path="/parent-one" component={ParentOne}/>
                     <Route path="/parent-two" component={ParentTwo}/>
-                    
+
+                    {/** Route with parameters note that the same someId identifier should be used at the receiving end component */}
+                    <Route path="/:someId" component={ComponentWithRouteParam} />
+
                 </main>
             </div>
         )
