@@ -11,8 +11,10 @@
 .nav li a{
     text-decoration: none;
     color: black;
+    padding: 10px;
 }
 .nav li a:active,
-.nav li a:hover{
-    color: burlywood;
+.nav li a:hover,
+.nav li a.active{
+    color: gray;
 }
