@@ -79,7 +79,12 @@ class Layout extends Component{
                         }}/>
 
                     {/* <Route path="/" render={() => <Home>Home 2</Home>}/> */}
-                    <Redirect from="/" to="/home"/>
+                    {/* <Redirect from="/" to="/home"/> */}
+                    {/* Implementing 404 error page */}
+                    {/* Basically when we want to implement 404 page we just use route component without path */}
+
+                    <Route render={()=> <h1>Not Found</h1>}/>
+
                 </Switch>
                 </main>
             </div>
