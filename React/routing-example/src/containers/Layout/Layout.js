@@ -10,8 +10,16 @@ import CSSClasses from './Layout.module.css';
 import ParentOne from '../ParentOne/ParentOne';
 import ParentTwo from '../ParentTwo/ParentTwo';
 
+
+const routerLinkOptions = {
+    pathname : '/parent-two',
+    hash: '#submit',
+    search: '?quick-search=true'
+}
+
 class Layout extends Component{
     render(){
+        
         return (
             <div>
                 <header>
@@ -25,7 +33,7 @@ class Layout extends Component{
                                 <Link to="/parent-one">Parent One</Link>
                             </li>
                             <li>
-                                <Link to="/parent-two">Parent Two</Link>
+                                <Link to={routerLinkOptions}>Parent Two</Link>
                             </li>
                         </ol>
                     </nav>
