@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, NavLink, Route, Switch } from 'react-router-dom';
+import { Link, NavLink, Route, Switch, Redirect } from 'react-router-dom';
 
 import ComponentWithRouteParam from '../../components/ComponentWithRouteParam';
 import ParentOne from '../ParentOne/ParentOne';
@@ -33,7 +33,7 @@ class Layout extends Component{
                                 {/** can provide the active styles using "activeStyles" attribute */ }
 
                                 <NavLink 
-                                    to="/" 
+                                    to="/home" 
                                     activeClassName={CSSClasses.active} 
                                     exact
                                     activeStyle={activeStyleObj}
@@ -56,30 +56,30 @@ class Layout extends Component{
                     {/* React should detect this routes first and then it has to render the other routes, it works as FIFO basis */}
                     <Route path="/parent-one" component={ParentOne}/>
                     <Route path="/parent-two" component={ParentTwo}/>
-
                     {/* Here Exact refers to check the exact URL of the route if you wont use it will takes as a base path and renders in all the paths starting with the same path */}
                     {/** Here we should remove exact attribute to make nested route work because the exact checks for the route and it wont render andy another route including child route */}
-                    <Route path="/" 
+                    <Route path="/home" 
                         render={() => {
                             return (
                                 <div>
                                 <ul>
                                     <li>
-                                        <Link to='/1'>View Link One</Link>
+                                        <Link to='/home/1'>View Link One</Link>
                                     </li>
                                     <li>
-                                        <Link to='/2'>View Link Two</Link>
+                                        <Link to='/home/2'>View Link Two</Link>
                                     </li>
                                 </ul>
 
                                 {/** Route with parameters note that the same someId identifier should be used at the receiving end component */}
-                                <Route path="/:someId" component={ComponentWithRouteParam} />
+                                {/** If we move this into component we can use this.props.match.url to create relative paths */}
+                                <Route path="/home/:someId" component={ComponentWithRouteParam} />
                                 </div>
                             )
                         }}/>
 
                     {/* <Route path="/" render={() => <Home>Home 2</Home>}/> */}
-
+                    <Redirect from="/" to="/home"/>
                 </Switch>
                 </main>
             </div>
