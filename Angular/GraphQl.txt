@@ -1,0 +1,9 @@
+GraphQl is a query language that tells to the server, the schema of the data we are expecting from server and accordingly the server should have a graphQl runtime so it can process and return with the expected Schema.
+
+
+GraphQl SpaceX API : https://api.spacex.land/graphql/
+Reference Link : https://www.youtube.com/watch?v=7wzR4Ig5pTI
+About GraphQl SpaceX Api :  https://medium.com/open-graphql/launching-spacex-graphql-api-b3d7029086e0
+GraphQl Code Genrator : https://graphql-code-generator.com/
+
+

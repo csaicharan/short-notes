@@ -1,0 +1,50 @@
+
+Angular ngRx Store usages and why to use this ngRx store
+
+https://blog.usejournal.com/redux-angular-style-ngrx-store-b2876280708e
+
+    Takeaways Always wont required unless you have complex state maitainence and multiple sources of changing data like sockets, firebase and user interactions.
+
+    Iron Clad Reason to Use ngrx/store
+        You have race conditions as a result of multiple actors (ie, user, websockets and/or workers) interacting with the application state
+
+    Possible Reasons to Use ngrx/store
+        State management is complex
+        Component interactions are excessive
+        Multiple state manipulators are at work (ie, server-push)
+        Understanding state and its behavior is becoming difficult
+        Snapshotting of the state is important
+        “Undo” support is required
+
+
+A sneak peak into super optimized code
+    https://www.youtube.com/watch?v=_VHNTC67NR8
+
+    Takeaways
+        Hidden classes, Mono Morphinism, Bit Fields, Bloom Filters,
+
+
+ASTExplorer.net
+
+TSMigrate
+Happo.io for regression testing
+cyPrass testing tool
+
+Is CSS unit testing is possible?
+    https://www.youtube.com/watch?v=Dl_XMd_1F6E
+
+    Appitools Eyes CSS unit testing or visual testing 
+    Presentation Link https://docs.google.com/presentation/d/1t4oSzwpEj1reNOd-AET5uyixIZZS1TFbhoU63SG9MgI/edit#slide=id.g5a25ecd6c9_0_3281
+
+
+Algorithms
+    Link    https://www.youtube.com/watch?v=0IAPZzGSbME&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O
+
+
+
+React styleguidist documentation for react Components
+
+https://github.com/styleguidist/react-styleguidist
+
+MonoRepo Information about what and automation and problems and the big picture
+https://itnext.io/monorepo-pains-9064db3b9882
